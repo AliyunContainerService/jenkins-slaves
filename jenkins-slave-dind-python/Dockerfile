@@ -1,4 +1,6 @@
-FROM registry.aliyuncs.com/ringtail/jenkins-dind-slave:latest
+FROM registry.aliyuncs.com/ringtail/jenkins-dind-slave:0.1
+
+MAINTAINER Ringtail <zhongwei.lzw@alibaba-inc.com>
 
 # remove several traces of debian python
 RUN apt-get purge -y python.*
