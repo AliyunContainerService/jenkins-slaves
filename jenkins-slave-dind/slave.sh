@@ -9,19 +9,12 @@ workspace="$1"
 testScriptsPath="$workspace/test.sh"
 buildScriptsPath="$workspace/build.sh"
 dockerfilePath="$workspace/Dockerfile"
-image_repo="$2"
-trigger_url="$3"
 
 function checkResult(){
   if [ ! "$1" == "0"  ];then
     exit 1;
   fi
 }
-
-echo "$testScriptsPath,$buildScriptsPath,$dockerfilePath"
-
-
-
 
 if [ -a "$buildScriptsPath" ]; then
   bash -c "$buildScriptsPath"
