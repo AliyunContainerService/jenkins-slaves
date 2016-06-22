@@ -5,5 +5,3 @@ jenkins containerized slaves
 
 A collection of jenkins dockerized slaves 
 
-## Language  
-python、golang、php
