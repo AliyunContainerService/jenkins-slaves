@@ -17,14 +17,14 @@ function checkResult(){
 }
 
 if [ -a "$buildScriptsPath" ]; then
-  sh "$buildScriptsPath"
+  bash -c "$buildScriptsPath"
   checkResult $?
 else
   echo "build.sh not found,skip build step"
 fi
 
 if [ -a "$testScriptsPath" ]; then
-  sh "$testScriptsPath"
+  bash -c "$testScriptsPath"
   checkResult $?
 else
   echo "test.sh not found,skip test step"
