@@ -1,4 +1,4 @@
-FROM registry.aliyuncs.com/ringtail/jenkins-dind-slave-java:0.1
+FROM registry.aliyuncs.com/ringtail/jenkins-slave-java:0.1
 
 ENV MAVEN_VERSION 3.3.9
 
