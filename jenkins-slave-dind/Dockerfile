@@ -1,5 +1,7 @@
 FROM evarga/jenkins-slave:latest
 
+MAINTAINER Ringtail <zhongwei.lzw@alibaba-inc.com>
+
 USER root
 
 ENV DEBIAN_FRONTEND noninteractive
