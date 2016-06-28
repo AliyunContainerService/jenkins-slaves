@@ -1,4 +1,4 @@
-FROM registry.aliyuncs.com/ringtail/jenkins-dind-slave:0.1
+FROM registry.aliyuncs.com/acs-sample/jenkins-slave-dind:0.1
 
 MAINTAINER Ringtail <zhongwei.lzw@alibaba-inc.com>
 
