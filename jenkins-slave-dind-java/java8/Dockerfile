@@ -3,8 +3,7 @@ FROM registry.aliyuncs.com/ringtail/jenkins-dind-slave:0.1
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		bzip2 \
 		unzip \
-		xz-utils \
-	&& rm -rf /var/lib/apt/lists/*
+		xz-utils
 
 # Default to UTF-8 file.encoding
 ENV LANG C.UTF-8
@@ -19,11 +18,14 @@ RUN { \
 	} > /usr/local/bin/docker-java-home \
 	&& chmod +x /usr/local/bin/docker-java-home
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
-
 RUN \
+  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  add-apt-repository -y ppa:webupd8team/java && \
   apt-get update && \
-  apt-get install -y openjdk-7-jdk && \
-  rm -rf /var/lib/apt/lists/*
+  apt-get install -y oracle-java8-installer && \
+  rm -rf /var/lib/apt/lists/* && \
+  rm -rf /var/cache/oracle-jdk8-installer
+	
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 CMD ["/usr/sbin/sshd", "-D"]
