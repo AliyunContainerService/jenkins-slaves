@@ -1,4 +1,4 @@
-FROM registry.aliyuncs.com/ringtail/jenkins-dind-slave:latest
+FROM registry.aliyuncs.com/acs-sample/jenkins-slave-dind:0.1
 
 ENV PATH /root/bin:$PATH
 
@@ -34,6 +34,6 @@ RUN set -x \
     && apt-get install -qqy \
         npm \
         sudo \
-        wget 
+        wget
 
 CMD ["/usr/sbin/sshd", "-D"]
