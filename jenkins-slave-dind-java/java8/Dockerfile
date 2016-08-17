@@ -4,7 +4,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		bzip2 \
 		unzip \
 		xz-utils \
-		ca-certificates \
 		python-software-properties \
 		software-properties-common
 
