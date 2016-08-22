@@ -6,10 +6,6 @@ USER root
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ADD code.key code.key
-RUN cat code.key >> /etc/ssl/certs/ca-certificates.crt
-RUN rm code.key
-
 # Adapted from: https://registry.hub.docker.com/u/jpetazzo/dind/dockerfile/
 # Let's start with some basic stuff.
 RUN apt-get update -qq && apt-get install -qqy \
