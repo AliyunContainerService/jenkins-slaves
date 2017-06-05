@@ -23,18 +23,15 @@ libssl-dev \
 iptables && \
 rm -rf /var/lib/apt/lists/*
 
-ENV DOCKER_BUCKET get.docker.com
-ENV DOCKER_VERSION 1.11.2
-ENV DOCKER_SHA256 8c2e0c35e3cda11706f54b2d46c2521a6e9026a7b13c7d4b8ae1f3a706fc55e1
+ENV DOCKER_CHANNEL stable
+ENV DOCKER_VERSION 17.03.1-ce
 
-RUN curl -fSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz" -o docker.tgz \
-	&& echo "${DOCKER_SHA256} *docker.tgz" | sha256sum -c - \
+RUN curl -fL -o docker.tgz "https://download.docker.com/linux/static/${DOCKER_CHANNEL}/x86_64/docker-${DOCKER_VERSION}.tgz" \
 	&& tar -xzvf docker.tgz \
 	&& mv docker/* /usr/local/bin/ \
 	&& rmdir docker \
 	&& rm docker.tgz \
 	&& chmod +x /usr/local/bin/docker
-
 
 
 ADD slave.sh /usr/local/bin/slave.sh
