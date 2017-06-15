@@ -25,7 +25,9 @@ RUN { \
 
 RUN add-apt-repository ppa:openjdk-r/ppa \
 	&& apt-get update \
-	&& apt-get install -y openjdk-8-jdk
+	&& apt-get install -y openjdk-8-jdk \
+	&& apt-get install ca-certificates-java \
+	&& update-ca-certificates -f
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 

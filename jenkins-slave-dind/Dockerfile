@@ -21,6 +21,7 @@ zlib1g.dev \
 openssl \
 libssl-dev \
 iptables && \
+update-ca-certificates -f && \
 rm -rf /var/lib/apt/lists/*
 
 ENV DOCKER_CHANNEL stable
