@@ -36,9 +36,8 @@ RUN curl -fL -o docker.tgz "https://download.docker.com/linux/static/${DOCKER_CH
 
 
 ADD slave.sh /usr/local/bin/slave.sh
+ADD sshd_config /etc/ssh/sshd_config
 RUN chmod +x /usr/local/bin/slave.sh
-RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
-
 
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]

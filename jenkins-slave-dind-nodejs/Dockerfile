@@ -1,4 +1,4 @@
-FROM registry.aliyuncs.com/acs-sample/jenkins-slave-dind:0.1
+FROM registry.cn-beijing.aliyuncs.com/codepipeline/jenkins-slave-dind:0.1
 
 ENV PATH /root/bin:$PATH
 
@@ -25,7 +25,6 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
   && grep " node-v$NODE_VERSION-linux-x64.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
   && tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 \
   && rm "node-v$NODE_VERSION-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt
-
 RUN set -x \
     && apt-get -qq update \
     && apt-get install -qqy apt-utils \

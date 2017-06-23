@@ -1,4 +1,4 @@
-FROM registry.aliyuncs.com/acs-sample/jenkins-slave-dind-java:0.1
+FROM registry.cn-beijing.aliyuncs.com/codepipeline/jenkins-slave-dind:0.1
 
 ENV MAVEN_VERSION 3.3.9
 
