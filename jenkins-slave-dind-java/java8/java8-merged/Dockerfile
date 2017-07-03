@@ -17,11 +17,11 @@ ENV MAVEN_HOME /usr/share/maven
 #gradle
 ENV GRADLE_VERSION 2.6
 
-RUN mkdir -p /usr/share/gradle-${GRADLE_VERSION} 
-RUN curl -sLO https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip 
-RUN unzip gradle-${GRADLE_VERSION}-all.zip -d /usr/share
-RUN ln -s /usr/share/gradle-${GRADLE_VERSION}/bin/gradle /usr/bin/gradle
-RUN rm gradle-${GRADLE_VERSION}-all.zip
+RUN mkdir -p /usr/share/gradle-${GRADLE_VERSION} \
+  && curl -sLO https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip \
+  && unzip gradle-${GRADLE_VERSION}-all.zip -d /usr/share \
+  && ln -s /usr/share/gradle-${GRADLE_VERSION}/bin/gradle /usr/bin/gradle \
+  && rm gradle-${GRADLE_VERSION}-all.zip
 
 ENV GRADLE_HOME /usr/share/gradle-${GRADLE_VERSION}
 ENV PATH $PATH:$GRADLE_HOME/bin
