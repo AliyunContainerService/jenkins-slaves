@@ -34,5 +34,6 @@ RUN set -x \
         npm \
         sudo \
         wget
+RUN npm config set registry https://registry.npm.taobao.org        
 
 CMD ["/usr/sbin/sshd", "-D"]
