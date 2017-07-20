@@ -23,6 +23,9 @@ RUN mkdir -p /usr/share/gradle-${GRADLE_VERSION} \
   && ln -s /usr/share/gradle-${GRADLE_VERSION}/bin/gradle /usr/bin/gradle \
   && rm gradle-${GRADLE_VERSION}-all.zip
 
+RUN mkdir -p /home/jenkins/tmp \
+  && export GRADLE_OPTS="-Djava.io.tmpdir=/home/jenkins/tmp"  
+
 ENV GRADLE_HOME /usr/share/gradle-${GRADLE_VERSION}
 ENV PATH $PATH:$GRADLE_HOME/bin
 
