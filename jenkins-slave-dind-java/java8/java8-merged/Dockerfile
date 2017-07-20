@@ -1,6 +1,8 @@
 FROM registry.cn-beijing.aliyuncs.com/codepipeline/jenkins-slave-dind-java:0.1
 
 #mirrors
+ADD sources.list sources.list
+RUN rm /etc/apt/sources.list
 RUN cat sources.list >> /etc/apt/sources.list
 
 #maven
