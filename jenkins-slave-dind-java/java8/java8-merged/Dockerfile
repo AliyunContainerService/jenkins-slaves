@@ -1,5 +1,8 @@
 FROM registry.cn-beijing.aliyuncs.com/codepipeline/jenkins-slave-dind-java:0.1
 
+#mirrors
+RUN cat sources.list >> /etc/apt/sources.list
+
 #maven
 ENV MAVEN_VERSION 3.3.9
 
