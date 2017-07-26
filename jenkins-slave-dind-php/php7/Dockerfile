@@ -87,6 +87,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && php composer-setup.php \
   && php -r "unlink('composer-setup.php');"
 
+RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
 COPY docker-php-ext-* /usr/local/bin/
 
 CMD ["/usr/sbin/sshd", "-D"]
