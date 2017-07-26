@@ -85,9 +85,14 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && ls -l  composer-setup.php \
   && chmod +x composer-setup.php \
   && php composer-setup.php \
-  && php -r "unlink('composer-setup.php');"
+  && php -r "unlink('composer-setup.php');" \
+  && mv composer.phar /usr/local/bin/composer \
+  && composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
-RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
+USER jenkins
+RUN  composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
+USER root
 
 COPY docker-php-ext-* /usr/local/bin/
 
