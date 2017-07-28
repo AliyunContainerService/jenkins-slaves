@@ -18,6 +18,7 @@ RUN set -ex \
 
 ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 6.2.2
+ENV NPＭ_CONFIG_REGISTRY https://registry.npm.taobao.org
 
 RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
@@ -33,7 +34,6 @@ RUN set -x \
     && apt-get install -qqy \
         npm \
         sudo \
-        wget
-RUN npm config set registry https://registry.npm.taobao.org        
+        wget     
 
 CMD ["/usr/sbin/sshd", "-D"]
