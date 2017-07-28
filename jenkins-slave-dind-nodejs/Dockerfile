@@ -34,6 +34,11 @@ RUN set -x \
     && apt-get install -qqy \
         npm \
         sudo \
-        wget     
+        wget   
+
+USER jenkins
+RUN echo registry=http://registry.npm.taobao.org/ > ~/.npmrc
+     
+USER root          
 
 CMD ["/usr/sbin/sshd", "-D"]
