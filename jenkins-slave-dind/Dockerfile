@@ -24,6 +24,14 @@ iptables && \
 update-ca-certificates -f && \
 rm -rf /var/lib/apt/lists/*
 
+
+RUN wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.13-rc4/linux-headers-4.13.0-041300rc4_4.13.0-041300rc4.201708062231_all.deb \
+    && wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.13-rc4/linux-headers-4.13.0-041300rc4-generic_4.13.0-041300rc4.201708062231_arm64.deb \
+    && wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.13-rc4/linux-image-4.13.0-041300rc4-generic_4.13.0-041300rc4.201708062231_arm64.deb \
+    && dpkg -i *.deb \
+    && uname -sr
+
+
 ENV DOCKER_CHANNEL stable
 ENV DOCKER_VERSION 17.03.1-ce
 
