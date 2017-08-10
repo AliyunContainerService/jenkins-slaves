@@ -1,9 +1,9 @@
-FROM registry.cn-beijing.aliyuncs.com/codepipeline/jenkins-slave-dind-java:0.1
+FROM registry.cn-beijing.aliyuncs.com/codepipeline/jenkins-slave-dind-java:0.2
 
 #maven
 ENV MAVEN_VERSION 3.3.9
 
-ADD code.key code.key		
+ADD code.key code.key
 RUN cat code.key >> /etc/ssl/certs/ca-certificates.crt
 RUN rm code.key
 
@@ -26,6 +26,6 @@ RUN mkdir -p /usr/share/gradle-${GRADLE_VERSION} \
 ENV GRADLE_HOME /usr/share/gradle-${GRADLE_VERSION}
 ENV PATH $PATH:$GRADLE_HOME/bin
 
-RUN chmod -R 777 /home/jenkins	
+RUN chmod -R 777 /home/jenkins
 
 CMD ["/usr/sbin/sshd", "-D"]

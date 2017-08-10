@@ -43,15 +43,7 @@ ENV LC_ALL en_US.UTF-8
 RUN useradd -m -d /home/jenkins -s /bin/sh jenkins
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV DOCKER_CHANNEL stable
-ENV DOCKER_VERSION 17.03.1-ce
-
-RUN curl -fL -o docker.tgz "https://download.docker.com/linux/static/${DOCKER_CHANNEL}/x86_64/docker-${DOCKER_VERSION}.tgz" \
-	&& tar -xzvf docker.tgz \
-	&& mv docker/* /usr/local/bin/ \
-	&& rmdir docker \
-	&& rm docker.tgz \
-	&& chmod +x /usr/local/bin/docker
+RUN curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -
 
 ADD ./sshd_config /etc/ssh/sshd_config
 

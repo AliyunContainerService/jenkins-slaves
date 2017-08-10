@@ -1,4 +1,4 @@
-FROM registry.cn-beijing.aliyuncs.com/codepipeline/jenkins-slave-dind:0.1
+FROM registry.cn-beijing.aliyuncs.com/codepipeline/jenkins-slave-dind:0.2
 
 ENV PATH /root/bin:$PATH
 
@@ -34,6 +34,6 @@ RUN set -x \
         npm \
         sudo \
         wget
-RUN npm config set registry https://registry.npm.taobao.org        
+RUN npm config set registry https://registry.npm.taobao.org
 
 CMD ["/usr/sbin/sshd", "-D"]
