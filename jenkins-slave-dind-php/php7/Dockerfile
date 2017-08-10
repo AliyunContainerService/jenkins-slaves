@@ -76,7 +76,7 @@ RUN set -xe \
 	&& make clean \
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps
 
-RUN wget -O phpunit.phar https://phar.phpunit.de/phpunit-5.4.6.phar \
+RUN wget --no-check-certificate -O phpunit.phar https://phar.phpunit.de/phpunit-5.4.6.phar \
   && chmod +x phpunit.phar \
   && mv phpunit.phar /usr/local/bin/phpunit \
   && phpunit --version
