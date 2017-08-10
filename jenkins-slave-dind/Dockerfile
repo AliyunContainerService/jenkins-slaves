@@ -4,7 +4,7 @@ MAINTAINER Ringtail <zhongwei.lzw@alibaba-inc.com>
 
 USER root
 
-ADD sources.list /etc/apt/sources.list
+ADD ./sources.list /etc/apt/sources.list
 
 # Add locales after locale-gen as needed
 # Upgrade packages on image
@@ -53,9 +53,9 @@ RUN curl -fL -o docker.tgz "https://download.docker.com/linux/static/${DOCKER_CH
 	&& rm docker.tgz \
 	&& chmod +x /usr/local/bin/docker
 
-ADD sshd_config /etc/ssh/sshd_config
+ADD ./sshd_config /etc/ssh/sshd_config
 
-COPY docker-entrypoint.sh /usr/local/bin/
+COPY ./docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 CMD ["sh"]
