@@ -89,7 +89,6 @@ RUN set -ex; \
 	rm -f get-pip.py
 
 # install "virtualenv", since the vast majority of users of this image will want it
-COPY pip.conf /root/.pip/pip.conf
 RUN pip install --no-cache-dir virtualenv
 
 CMD ["/usr/sbin/sshd", "-D"]
