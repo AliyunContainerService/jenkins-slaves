@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
 		$PHPIZE_DEPS \
 		ca-certificates \
 		curl \
+		libcurl3 \
 		wget \
 		libedit2 \
 		libsqlite3-0 \
