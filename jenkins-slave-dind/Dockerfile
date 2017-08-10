@@ -29,6 +29,7 @@ RUN apt-get -q update && \
 				zlib1g.dev \
 				openssl \
 				libssl-dev \
+				libcurl4-openssl-dev \ 
 				iptables && \
     apt-get -q autoremove &&\
     apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin &&\
