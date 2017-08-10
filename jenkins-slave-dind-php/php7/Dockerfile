@@ -1,4 +1,4 @@
-FROM registry.cn-beijing.aliyuncs.com/codepipeline/jenkins-slave-dind:0.2 
+FROM registry.cn-beijing.aliyuncs.com/codepipeline/jenkins-slave-dind:0.2
 
 MAINTAINER Ringtail <zhongwei.lzw@alibaba-inc.com>
 
@@ -75,7 +75,7 @@ RUN set -xe \
 	&& make clean \
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps
 
-RUN curl -o phpunit.phar https://phar.phpunit.de/phpunit-5.4.6.phar \
+RUN wget -O phpunit.phar https://phar.phpunit.de/phpunit-5.4.6.phar \
   && chmod +x phpunit.phar \
   && mv phpunit.phar /usr/local/bin/phpunit \
   && phpunit --version
