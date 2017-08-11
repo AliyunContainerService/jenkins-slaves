@@ -2,8 +2,8 @@ FROM registry.cn-beijing.aliyuncs.com/codepipeline/jenkins-slave-dind:0.2
 
 ENV PATH /root/bin:$PATH
 
-RUN groupadd --gid 1000 node \
-  && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
+RUN groupadd --gid 1001 node \
+  && useradd --uid 1001 --gid node --shell /bin/bash --create-home node
 
 # gpg keys listed at https://github.com/nodejs/node#release-team
 RUN set -ex \
