@@ -72,7 +72,7 @@ ENV PYTHON_PIP_VERSION 9.0.1
 
 RUN set -ex; \
 	\
-	wget -O get-pip.py 'https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py'; \
+	wget -O get-pip.py 'https://raw.githubusercontent.com/pypa/get-pip/master/3.2/get-pip.py'; \
 	\
 	python get-pip.py \
 		--disable-pip-version-check \
