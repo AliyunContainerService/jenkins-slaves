@@ -47,6 +47,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -
 
 ADD ./sshd_config /etc/ssh/sshd_config
+EXPOSE 22
 
 COPY ./docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
