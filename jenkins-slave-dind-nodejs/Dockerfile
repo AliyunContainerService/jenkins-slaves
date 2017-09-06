@@ -59,4 +59,10 @@ RUN set -ex \
   && ln -s /opt/yarn/bin/yarn /usr/local/bin/yarnpkg \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz
 
+#mirror
+USER jenkins
+RUN echo registry=http://registry.npm.taobao.org/ > ~/.npmrc
+USER root   
+RUN echo registry=http://registry.npm.taobao.org/ > ~/.npmrc
+
 CMD ["/usr/sbin/sshd", "-D"]
