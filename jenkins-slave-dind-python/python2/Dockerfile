@@ -79,7 +79,13 @@ RUN set -ex; \
 		\) -exec rm -rf '{}' +; \
 	rm -f get-pip.py
 
+#ahthenticate "jenkins" to pip  
+RUN chown -R jenkins:jenkins /usr/local/
+
 # install "virtualenv", since the vast majority of users of this image will want it
+USER jenkins
+RUN pip install -i https://mirrors.aliyun.com/pypi/simple --no-cache-dir virtualenv
+USER root
 RUN pip install -i https://mirrors.aliyun.com/pypi/simple --no-cache-dir virtualenv
 
 CMD ["/usr/sbin/sshd", "-D"]
