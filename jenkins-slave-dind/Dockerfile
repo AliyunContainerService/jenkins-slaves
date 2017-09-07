@@ -30,6 +30,8 @@ RUN apt-get -q update && \
 				openssl \
 				libssl-dev \
 				libcurl4-openssl-dev \ 
+				sudo \
+				locale-gen \
 				iptables && \
     apt-get -q autoremove &&\
     apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin &&\
