@@ -95,7 +95,7 @@ RUN  composer config -g repo.packagist composer https://packagist.phpcomposer.co
 RUn apt-get install -y \
 	zip \
 	unzip \
-	php7.0-zip
+	php-zip
 
 COPY docker-php-ext-* /usr/local/bin/
 
