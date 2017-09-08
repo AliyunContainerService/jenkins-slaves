@@ -32,6 +32,7 @@ RUN apt-get -q update && \
 				libcurl4-openssl-dev \ 
 				sudo \
 				locales \
+				zip \
 				iptables && \
     apt-get -q autoremove &&\
     apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin &&\
