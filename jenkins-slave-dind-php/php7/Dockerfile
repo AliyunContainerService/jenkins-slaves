@@ -92,9 +92,7 @@ USER jenkins
 RUN  composer config -g repo.packagist composer https://packagist.phpcomposer.com
 USER root  
 RUN  composer config -g repo.packagist composer https://packagist.phpcomposer.com
-RUn apt-get install -y \
-	zip \
-	unzip
+RUN  apt-get install unzip 
 
 COPY docker-php-ext-* /usr/local/bin/
 
