@@ -94,8 +94,7 @@ USER root
 RUN  composer config -g repo.packagist composer https://packagist.phpcomposer.com
 RUn apt-get install -y \
 	zip \
-	zlib1g-dev \
-	&& docker-php-ext-install zip
+	unzip
 
 COPY docker-php-ext-* /usr/local/bin/
 
