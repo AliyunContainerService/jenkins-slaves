@@ -76,7 +76,10 @@ RUN set -xe \
 	&& make clean \
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps
 
-RUN /usr/bin/curl -o phpunit.phar https://phar.phpunit.de/phpunit-6.2.3.phar \
+RUN  find . | grep curl \ 
+  && ln -s /usr/lib/x86_64-linux-gnu/libcurl.so.4 /usr/lib/libcurl.so.4 \
+  && ldconfig \
+  && curl -o phpunit.phar https://phar.phpunit.de/phpunit-6.2.3.phar \
   && chmod +x phpunit.phar \
   && mv phpunit.phar /usr/local/bin/phpunit \
   && phpunit --version
