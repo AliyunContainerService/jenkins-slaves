@@ -28,4 +28,9 @@ ENV PATH $PATH:$GRADLE_HOME/bin
 
 RUN chmod -R 777 /home/jenkins
 
+#git ignore ssl
+RUN git config --global http.sslVerify "false"
+USER jenkins
+RUN git config --global http.sslVerify "false"
+
 CMD ["/usr/sbin/sshd", "-D"]
