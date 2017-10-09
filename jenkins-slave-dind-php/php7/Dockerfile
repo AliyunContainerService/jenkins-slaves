@@ -100,4 +100,10 @@ USER root
 
 COPY docker-php-ext-* /usr/local/bin/
 
+#git ignore ssl
+RUN git config --global http.sslVerify "false"
+USER jenkins
+RUN git config --global http.sslVerify "false"
+USER root
+
 CMD ["/usr/sbin/sshd", "-D"]
