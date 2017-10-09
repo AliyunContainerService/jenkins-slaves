@@ -65,4 +65,10 @@ RUN echo registry=http://registry.npm.taobao.org/ > ~/.npmrc
 USER root   
 RUN echo registry=http://registry.npm.taobao.org/ > ~/.npmrc
 
+#git ignore ssl
+RUN git config --global http.sslVerify "false"
+USER jenkins
+RUN git config --global http.sslVerify "false"
+USER root
+
 CMD ["/usr/sbin/sshd", "-D"]
