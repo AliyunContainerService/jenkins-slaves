@@ -88,4 +88,10 @@ RUN pip install -i https://mirrors.aliyun.com/pypi/simple --no-cache-dir virtual
 USER root
 RUN pip install -i https://mirrors.aliyun.com/pypi/simple --no-cache-dir virtualenv
 
+#git ignore ssl
+RUN git config --global http.sslVerify "false"
+USER jenkins
+RUN git config --global http.sslVerify "false"
+USER root
+
 CMD ["/usr/sbin/sshd", "-D"]
