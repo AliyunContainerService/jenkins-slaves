@@ -27,4 +27,10 @@ WORKDIR $GOPATH
 
 COPY go-wrapper /usr/local/bin/
 
+#git ignore ssl
+RUN git config --global http.sslVerify "false"
+USER jenkins
+RUN git config --global http.sslVerify "false"
+USER root
+
 CMD ["/usr/sbin/sshd", "-D"]
