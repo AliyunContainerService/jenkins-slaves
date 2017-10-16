@@ -73,23 +73,15 @@ RUN set -xe \
 	&& make -j"$(nproc)" \
 	&& make install \
 	&& { find /usr/local/bin /usr/local/sbin -type f -executable -exec strip --strip-all '{}' + || true; } \
-	&& make clean \
-	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps
+	&& make clean
 
-RUN  find . | grep curl \ 
-  && ln -s /usr/lib/x86_64-linux-gnu/libcurl.so.4 /usr/lib/libcurl.so.4 \
-  && ldconfig \
-  && curl -o phpunit.phar https://phar.phpunit.de/phpunit-6.2.3.phar \
+RUN curl -o phpunit.phar https://phar.phpunit.de/phpunit-6.2.3.phar \
   && chmod +x phpunit.phar \
   && mv phpunit.phar /usr/local/bin/phpunit \
+  && php --version \
   && phpunit --version
 
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-  && php -r "if (hash_file('SHA384', 'composer-setup.php') === '669656bab3166a7aff8a7506b8cb2d1c292f042046c5a994c43155c0be6190fa0355160742ab2e1c88d40d5be660b410') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
-  && ls -l  composer-setup.php \
-  && chmod +x composer-setup.php \
-  && php composer-setup.php \
-  && php -r "unlink('composer-setup.php');" \
+RUN curl -sS https://getcomposer.org/installer | php \
   && mv composer.phar /usr/local/bin/composer \
   && composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
