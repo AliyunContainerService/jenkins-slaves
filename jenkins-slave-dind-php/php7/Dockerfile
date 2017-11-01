@@ -10,7 +10,9 @@ ENV PHPIZE_DEPS \
 		libc-dev \
 		make \
 		pkg-config \
-		re2c
+		re2c \
+		zlib1g-dev \
+		libpng-dev
 RUN apt-get update && apt-get install -y \
 		$PHPIZE_DEPS \
 		ca-certificates \
@@ -75,6 +77,9 @@ RUN set -xe \
 	&& { find /usr/local/bin /usr/local/sbin -type f -executable -exec strip --strip-all '{}' + || true; } \
 	&& make clean
 
+COPY docker-php-ext-* /usr/local/bin/
+RUN docker-php-ext-install gd
+
 RUN curl -o phpunit.phar https://phar.phpunit.de/phpunit-6.2.3.phar \
   && chmod +x phpunit.phar \
   && mv phpunit.phar /usr/local/bin/phpunit \
@@ -97,5 +102,5 @@ RUN git config --global http.sslVerify "false"
 USER jenkins
 RUN git config --global http.sslVerify "false"
 USER root
-
 CMD ["/usr/sbin/sshd", "-D"]
+
