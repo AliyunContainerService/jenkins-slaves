@@ -87,13 +87,7 @@ RUN curl -o phpunit.phar https://phar.phpunit.de/phpunit-6.2.3.phar \
   && phpunit --version
 
 RUN curl -sS https://getcomposer.org/installer | php \
-  && mv composer.phar /usr/local/bin/composer \
-  && composer config -g repo.packagist composer https://packagist.phpcomposer.com
-
-USER jenkins
-RUN  composer config -g repo.packagist composer https://packagist.phpcomposer.com
-
-USER root
+  && mv composer.phar /usr/local/bin/composer 
 
 COPY docker-php-ext-* /usr/local/bin/
 
